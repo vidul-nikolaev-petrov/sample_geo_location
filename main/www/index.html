@@ -30,14 +30,15 @@
         <h1 class="title">Sample Geo Location</h1>
       </ion-header-bar>
       <ion-content ng-controller="MainController">
-        <div style="margin:0.5em; margin-top:2em;">
+        <div class="row padding">
           <button class="button button-block"
-              style="padding:1em"
               ng-click="saveLocation(model.location)">
                 <b>lat</b> {{ model.location.latitude }}<br>
                 <b>lng</b> {{ model.location.longitude }}<br>
                 <b>accuracy</b> {{ model.location.accuracy }}<br>
           </button>
+        </div>
+        <div class="row padding">
           <button class="button button-block" ng-if="model.location_saved">
               saved location: 
               <b>{{ model.location_saved.latitude }}</b>,
