@@ -16,18 +16,35 @@
     <script src="lib/ionic/js/ionic.bundle.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
+    <script src="js/ng-cordova.min.js"></script>
     <script src="cordova.js"></script>
 
     <!-- your app's js -->
     <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
   </head>
   <body ng-app="starter">
 
     <ion-pane>
       <ion-header-bar class="bar-stable">
-        <h1 class="title">Ionic Blank Starter</h1>
+        <h1 class="title">Sample Geo Location</h1>
       </ion-header-bar>
-      <ion-content>
+      <ion-content ng-controller="MainController">
+        <div style="margin:0.5em; margin-top:2em;">
+          <button class="button button-block"
+              style="padding:1em"
+              ng-click="saveLocation(model.location)">
+                <b>lat</b> {{ model.location.latitude }}<br>
+                <b>lng</b> {{ model.location.longitude }}<br>
+                <b>accuracy</b> {{ model.location.accuracy }}<br>
+          </button>
+          <button class="button button-block" ng-if="model.location_saved">
+              saved location: 
+              <b>{{ model.location_saved.latitude }}</b>,
+              <b>{{ model.location_saved.longitude }}</b>,
+              <b>{{ model.location_saved.accuracy }}</b>
+          </button>
+        </div>
       </ion-content>
     </ion-pane>
   </body>

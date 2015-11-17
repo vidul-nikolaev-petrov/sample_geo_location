@@ -16,14 +16,15 @@ angular.module('starter.controllers', [])
 
     navigator.geolocation.watchPosition(
         function (response) {
-            $scope.model.location = response.coords;
-            $scope.$digest();
-            $log.info('>>>',
-                response.coords.accuracy, {
-                    lat: $scope.model.location.latitude,
-                    lng: $scope.model.location.longitude,
-                    accuracy: $scope.model.location.accuracy,
-                });
+            $scope.$apply(function () {
+                $scope.model.location = response.coords;
+                $log.info('>>>',
+                    response.coords.accuracy, {
+                        lat: $scope.model.location.latitude,
+                        lng: $scope.model.location.longitude,
+                        accuracy: $scope.model.location.accuracy,
+                    });
+            });
         },
         function (error) {
             $log.error(error.message);
